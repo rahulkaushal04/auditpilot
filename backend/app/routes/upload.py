@@ -25,7 +25,7 @@ async def upload_risk_register(
             detail="Only CSV and XLSX files are supported.",
         )
 
-    contents = await file.read()
+    contents = await file.read(MAX_FILE_SIZE_BYTES + 1)
 
     if not contents:
         raise HTTPException(
